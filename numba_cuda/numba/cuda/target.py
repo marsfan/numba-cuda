@@ -3,10 +3,9 @@ from functools import cached_property
 import llvmlite.binding as ll
 from llvmlite import ir
 import warnings
-from numba.cuda import cgutils
+from numba.cuda import cgutils, itanium_mangler
 from numba.core import (
     config,
-    itanium_mangler,
     targetconfig,
     types,
     typing,

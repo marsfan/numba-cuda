@@ -1,13 +1,11 @@
 from llvmlite import ir
 from collections import namedtuple
 from numba.core import ir as numba_ir
-from numba.cuda import cgutils
+from numba.cuda import cgutils, typing
 from numba.core import (
     types,
-    typing,
     funcdesc,
     config,
-    sigutils,
 )
 from numba.cuda import compiler
 from numba.cuda.core.compiler import CompilerBase
@@ -30,6 +28,7 @@ from numba.cuda import nvvmutils
 from numba.cuda.api import get_current_device
 from numba.cuda.codegen import ExternalCodeLibrary
 from numba.cuda.core.typed_passes import BaseNativeLowering, NativeLowering
+from numba.cuda.core import sigutils
 from numba.cuda.cudadrv import nvvm, nvrtc
 from numba.cuda.descriptor import cuda_target
 from numba.cuda.flags import CUDAFlags
