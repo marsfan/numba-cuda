@@ -28,7 +28,7 @@ $CUDA_VER_MAJOR = ($env:CUDA_VER -split '\.')[0] -join '.'
 rapids-logger "Install wheel with test dependencies"
 $package = Resolve-Path wheel\numba_cuda*.whl | Select-Object -ExpandProperty Path
 echo "Package path: $package"
-python -m pip install "$package[test,cu12]" "cuda-python==$CUDA_VER_MAJOR.*" "cuda-core==0.3.*"
+python -m pip install "${package}[cu${CUDA_VER_MAJOR},test-cu${CUDA_VER_MAJOR}]"
 
 $SYS_PREFIX = (python -c "import sys; print(sys.prefix)")
 
