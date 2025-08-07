@@ -42,7 +42,9 @@ rapids-logger "Build tests"
 $NUMBA_CUDA_TEST_BIN_DIR = (python ci\get_test_binary_dir.py)
 echo "Test binary dir: $NUMBA_CUDA_TEST_BIN_DIR"
 pushd $NUMBA_CUDA_TEST_BIN_DIR
-.\build.bat
+Get-Location
+
+cmd.exe /c '.\build.bat'
 popd
 
 rapids-logger "Check GPU usage"
