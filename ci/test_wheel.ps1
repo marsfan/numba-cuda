@@ -40,6 +40,7 @@ $env:NUMBA_CUDA_NVRTC_EXTRA_SEARCH_PATHS = "$SYS_PREFIX\Lib\site-packages\nvidia
 
 rapids-logger "Build tests"
 $NUMBA_CUDA_TEST_BIN_DIR = (python ci\get_test_binary_dir.py)
+echo "Test binary dir: $NUMBA_CUDA_TEST_BIN_DIR"
 pushd $NUMBA_CUDA_TEST_BIN_DIR
 .\build.bat
 popd
