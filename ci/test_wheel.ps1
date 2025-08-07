@@ -38,19 +38,11 @@ copy "$SYS_PREFIX\Lib\site-packages\nvidia\cuda_nvrtc\bin\nvrtc-builtins64_*.dll
 # WAR for CCCL headers in non-standard location in wheel
 $env:NUMBA_CUDA_NVRTC_EXTRA_SEARCH_PATHS = "$SYS_PREFIX\Lib\site-packages\nvidia\cuda_cccl\include"
 
-# GET_TEST_BINARY_DIR="
-# import numba_cuda
-# root = numba_cuda.__file__.rstrip('__init__.py')
-# test_dir = root + \"numba/cuda/tests/test_binary_generation/\"
-# print(test_dir)
-# "
-
-# rapids-logger "Build tests"
-# export NUMBA_CUDA_TEST_BIN_DIR=$(python -c "$GET_TEST_BINARY_DIR")
-# pushd $NUMBA_CUDA_TEST_BIN_DIR
-# make
-# popd
-
+rapids-logger "Build tests"
+$NUMBA_CUDA_TEST_BIN_DIR = (python ci\get_test_binary_dir.py)
+pushd $NUMBA_CUDA_TEST_BIN_DIR
+.\build.bat
+popd
 
 rapids-logger "Check GPU usage"
 nvidia-smi
